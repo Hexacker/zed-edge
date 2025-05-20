@@ -3,8 +3,8 @@ grammar = "edge"
 path_suffixes = ["edge"]
 tab_size = 2
 hard_tabs = false
-line-comments = "{{-- "
-block-comment = ["{{-- ", " --}}", "// "]
+line_comments = "{{-- "
+block_comment = ["{{-- ", " --}}", "// "]
 brackets = [
     { start = "{", end = "}", close = true, newline = true },
     { start = "{{", end = "}}", close = true, newline = true },
