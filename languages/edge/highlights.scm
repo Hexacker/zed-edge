@@ -53,7 +53,7 @@
 
 ; Boolean
 ((identifier) @boolean
-  (#match? @boolean "^(true|false)$"))
+ (#match? @boolean "^(true|false)$"))
 
 ; Operators
 ["=" "+" "-" "*" "/" "!" ">" "<" ">=" "<=" "==" "!=" "===" "!==" "&&" "||" "??"] @operator
