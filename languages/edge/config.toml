@@ -1,10 +1,10 @@
 name = "Edge"
 grammar = "edge"
-path_suffixes = ["edge"]
+path_suffixes = [".edge"]
 tab_size = 2
 hard_tabs = false
-line_comments = "{{-- "
-block_comment = ["{{-- ", " --}}", "// "]
+line-comments = "{{-- "
+block-comment = ["{{-- ", " --}}", "// "]
 brackets = [
     { start = "{", end = "}", close = true, newline = true },
     { start = "{{", end = "}}", close = true, newline = true },
