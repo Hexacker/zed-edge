@@ -7,5 +7,5 @@ description = "Add Syntax Highlight Support for EdgeJS"
 repository = "https://github.com/Hexacker/zed-edge.git"
 
 [grammars.edge]
-repository = "https://github.com/Brayan-724/tree-sitter-edge"
-commit = "39a8c0b79fc30e93f43505e7554b156a062354b6"
+repository = "https://github.com/KABBOUCHI/tree-sitter-edge"
+rev = "8e4e8d66d687fd0c204fb5d8905239cebc674d24"
