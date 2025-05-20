@@ -22,11 +22,11 @@
   (tag_name) @_tag
   (#eq? @_tag "style")
   (text) @injection.content)
- (#set! injection.language "css"))
+  (#set! injection.language "css"))
 
 ; JavaScript in script tags
 ((element_node
   (tag_name) @_tag
   (#eq? @_tag "script")
   (text) @injection.content)
- (#set! injection.language "javascript"))
+  (#set! injection.language "javascript"))
