@@ -1,14 +1,14 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+use zed_extension_api as zed;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+struct EdgeExtension;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+impl zed::Extension for EdgeExtension {
+    fn new() -> Self
+    where
+        Self: Sized,
+    {
+        Self
     }
 }
+
+zed::register_extension!(EdgeExtension);

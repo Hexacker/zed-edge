@@ -1,0 +1,11 @@
+id = "edge"
+name = "Edge Zed"
+version = "0.0.1"
+schema_version = 1
+authors = ["Abdelmadjid Cherfaoui <contact@hexacker.com>"]
+description = "Add Syntax Highlight Support for EdgeJS"
+repository = "https://github.com/Hexacker/zed-edge.git"
+
+[grammars.edge]
+repository = "https://github.com/Brayan-724/tree-sitter-edge"
+rev = "39a8c0b79fc30e93f43505e7554b156a062354b6"
