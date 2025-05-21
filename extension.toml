@@ -8,4 +8,4 @@ repository = "https://github.com/Hexacker/zed-edge.git"
 
 [grammars.edge]
 repository = "https://github.com/Hexacker/tree-sitter-edge"
-commit = "b6018988bdd9fdaa30cdcfe9a71372a252665326"
+rev = "main"

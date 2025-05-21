@@ -1,6 +1,6 @@
 # languages/edge/config.toml
 name = "Edge"
 grammar = "edge"
-path_suffixes = [".edge"]
+path_suffixes = ["edge"]
 line_comments = ["{{-- ", " --}}"]
 block_comment = ["{{--", "--}}"]
