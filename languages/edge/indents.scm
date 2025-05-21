@@ -1,34 +1,14 @@
-; EdgeJS Indentation Query
-; ---------------------------
+; Edge Template Indentation
 
-; Indent on opening tags/blocks
-[
-  (element_node)
-  (self_closing_tag_node)
-  (directive_node)
-  (block_statement)
-  (if_statement)
-  (for_statement)
-  (while_statement)
-  (function_declaration)
-  (function_expression)
-  (object)
-  (array)
-] @indent
+; Indent within HTML elements
+(element) @indent
 
-; Stop indentation at closing tags/blocks
-[
-  (closing_tag)
-  "}"
-  "]"
-  ")"
-] @outdent
+; Indent within directives
+(if_directive) @indent
+(else_directive) @indent
+(each_directive) @indent
+(component_directive) @indent
+(slot_directive) @indent
 
-; Dedent on else blocks
-[
-  "else"
-] @outdent @indent
-
-; Indent content inside tags
-(element_node
-  (text) @indent)
+; End indentation
+"@end" @outdent

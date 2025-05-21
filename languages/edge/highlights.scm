@@ -1,68 +1,33 @@
-; EdgeJS Highlight Query
-; ---------------------------
+; Edge Template Syntax Highlighting
 
 ; HTML Tags
-(element_node
-  (tag_name) @tag)
+(tag_name) @tag
 
-(element_node
-  (closing_tag
-    (tag_name) @tag))
-
-(self_closing_tag_node
-  (tag_name) @tag)
-
-; HTML Attributes
-(attribute_node
-  (attribute_name) @tag.attribute)
-
-; Strings
+; Attributes
+(attribute_name) @tag.attribute
+(attribute_value) @string
 (quoted_attribute_value) @string
-(string) @string
-
-; Comments
-(comment_node) @comment
-(comment) @comment
 
 ; Edge Directives
-(directive_node
-  (directive_name) @keyword)
+(if_directive "@if") @keyword.control
+(else_directive "@else") @keyword.control
+(else_directive "@elseif") @keyword.control
+(each_directive "@each") @keyword.control
+(component_directive "@component") @keyword.control
+(slot_directive "@slot") @keyword.control
+(include_directive "@include") @keyword.function
+(let_directive "@let") @keyword
+(raw_directive "@" @operator (identifier) @function)
 
-; JavaScript within Edge
-(interpolation) @none
+; Output expressions
+(output_expression "{{" @punctuation.bracket
+                    "}}" @punctuation.bracket)
 
-(interpolation
-  (expression) @expression)
+; JavaScript expressions
+(js_expression) @expression
 
-; JS Keywords
-["if" "else" "for" "while" "return" "break" "continue" "const" "let" "var"] @keyword
+; Comments
+(comment) @comment
 
-; JS Functions
-(function_expression
-  "function" @keyword.function
-  name: (identifier)? @function)
-
-; JS Variables
-(variable_declaration
-  name: (identifier) @variable)
-
+; Identifiers
 (identifier) @variable
-
-; JS Numbers
-(number) @number
-
-; Boolean
-((identifier) @boolean
- (#match? @boolean "^(true|false)$"))
-
-; Operators
-["=" "+" "-" "*" "/" "!" ">" "<" ">=" "<=" "==" "!=" "===" "!==" "&&" "||" "??"] @operator
-
-; Braces and brackets
-["(" ")" "[" "]" "{" "}"] @punctuation.bracket
-
-; Separators
-[";" "." "," ":"] @punctuation.delimiter
-
-; HTML Entities
-(entity_reference) @constant.character.escape

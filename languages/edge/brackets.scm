@@ -1,24 +1,25 @@
-; EdgeJS Bracket Query
-; ---------------------------
+; Edge Template Bracket Matching
 
 ; HTML tag pairs
-(element_node
-  (tag_name) @open
-  (closing_tag
-    (tag_name) @close)
-  (#eq? @open @close))
+(open_tag) @open
+(close_tag) @close
 
-; JS brackets
-(["(" ")" "[" "]" "{" "}"] @bracket)
+; Edge directive pairs
+(if_directive) @open
+"@end" @close
 
-; Bracket pairs
+(each_directive) @open
+"@end" @close
+
+(component_directive) @open
+"@end" @close
+
+(slot_directive) @open
+"@end" @close
+
+; Output expression delimiters
+"{{" @open
+"}}" @close
+
+; Standard brackets
 ["(" ")"] @bracket.paren
-["{" "}"] @bracket.curly
-["[" "]"] @bracket.square
-
-; Matching directive blocks
-(directive_node
-  (directive_name) @directive.open)
-(end_directive_node
-  (end_directive_name) @directive.close
-  (#eq? @directive.open @directive.close))
