@@ -1,39 +1,55 @@
-; EdgeJS Syntax Highlighting - Comment Focus
+; HTML Elements
+(tag_name) @constructor
 
-; HTML elements
-(tag_name) @tag
-(attribute_name) @tag.attribute
+; HTML Attributes
+(attribute_name) @attribute
 (attribute_value) @string
-(quoted_attribute_value) @string
+(attribute_text) @string
 
-; Edge directives
-(if_directive) @keyword.control
-(else_directive) @keyword.control
-(each_directive) @keyword.control
-(component_directive) @keyword
-(slot_directive) @keyword
-(include_directive) @keyword
-(let_directive) @keyword
+; EdgeJS Directives
+(directive_name) @keyword.control
+(directive_method) @function
+"end" @keyword.control
+"else" @keyword.control  
+"elseif" @keyword.control
 
-; Raw directive components
-"@" @keyword.directive
-(directive_expression) @function.directive
-
-; Each directive special syntax
-(each_params "in") @keyword
-
-; Output expressions
-"{{" @punctuation.special
-"}}" @punctuation.special
-"{{{" @punctuation.special
-"}}}" @punctuation.special
-
-; Expression components
-(identifier) @variable
-(string) @string
-(number) @number
-(method_call) @function.call
+; EdgeJS Expression Content
+(function_call) @function.builtin
 (member_expression) @property
+(identifier) @variable
+(ternary_expression) @conditional
+(binary_expression) @operator
 
-; Comments with different styling
-(comment) @comment.dim
+; EdgeJS Parameters
+(complex_parameter) @variable
+
+; EdgeJS Output Expressions
+"{{" @punctuation.bracket
+"}}" @punctuation.bracket
+"{{{" @punctuation.bracket
+"}}}" @punctuation.bracket
+
+; Comments
+(comment) @comment
+
+; HTML Structure
+"<" @punctuation.bracket
+">" @punctuation.bracket
+"</" @punctuation.bracket
+"/>" @punctuation.bracket
+
+; Directive symbols
+"@" @operator
+"||" @operator
+"&&" @operator
+"?" @conditional
+
+; Text content
+(text_content) @text
+
+; DOCTYPE
+"<!DOCTYPE" @keyword
+"html" @constructor
+
+; Standalone expressions
+(standalone_expression) @conditional

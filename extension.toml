@@ -1,6 +1,6 @@
 id = "edge"
-name = "Edge Zed"
-version = "0.0.1"
+name = "Edge"
+version = "0.1.0"
 schema_version = 1
 authors = ["Abdelmadjid Cherfaoui <contact@hexacker.com>"]
 description = "Add Syntax Highlight Support for EdgeJS"

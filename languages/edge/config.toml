@@ -1,6 +1,9 @@
-# languages/edge/config.toml
 name = "Edge"
 grammar = "edge"
 path_suffixes = ["edge"]
 line_comments = ["{{-- ", " --}}"]
-block_comment = ["{{--", "--}}"]
+block_comments = [["{{-- ", " --}}"]]
+tab_size = 2
+hard_tabs = false
+word_characters = ["_", "-"]
+auto_indent_using_last_non_empty_line = true

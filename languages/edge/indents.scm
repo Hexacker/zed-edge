@@ -1,14 +1,11 @@
-; Edge Template Indentation
+; Indent after opening HTML tags
+(start_tag) @indent
 
-; Indent within HTML elements
-(element) @indent
+; Indent after EdgeJS block directive statements
+(directive_statement) @indent
 
-; Indent within directives
-(if_directive) @indent
-(else_directive) @indent
-(each_directive) @indent
-(component_directive) @indent
-(slot_directive) @indent
+; Outdent before closing HTML tags
+(end_tag) @outdent
 
-; End indentation
-"@end" @outdent
+; Outdent before EdgeJS directive keywords
+(directive_keyword) @outdent
