@@ -19,9 +19,20 @@
 (identifier) @variable
 (ternary_expression) @conditional
 (binary_expression) @operator
+(unary_expression) @operator
+(array_literal) @punctuation.bracket
 
 ; EdgeJS Parameters
-(complex_parameter) @variable
+(each_parameter) @variable
+(component_parameter) @variable
+(let_parameter) @variable
+(param_identifier) @variable
+(param_string) @string
+(param_number) @number
+(param_boolean) @constant
+(param_object) @punctuation.bracket
+(param_property) @property
+(param_member_expression) @property
 
 ; EdgeJS Output Expressions
 "{{" @punctuation.bracket
@@ -37,19 +48,33 @@
 ">" @punctuation.bracket
 "</" @punctuation.bracket
 "/>" @punctuation.bracket
+"<!DOCTYPE" @keyword
 
 ; Directive symbols
 "@" @operator
+"?" @conditional
+":" @operator
+
+; Operators
 "||" @operator
 "&&" @operator
-"?" @conditional
+"==" @operator
+"!=" @operator
+"===" @operator
+"!==" @operator
+"<" @operator
+">" @operator
+"<=" @operator
+">=" @operator
+"+" @operator
+"-" @operator
+"*" @operator
+"/" @operator
+"%" @operator
 
 ; Text content
 (text_content) @text
-
-; DOCTYPE
-"<!DOCTYPE" @keyword
-"html" @constructor
+(raw_text) @text
 
 ; Standalone expressions
 (standalone_expression) @conditional
