@@ -2,16 +2,16 @@
 (tag_name) @constructor
 
 ; HTML Attributes
-(attribute_name) @attribute
+(attribute_name) @property
 (attribute_value) @string
 (attribute_text) @string
 
 ; EdgeJS Directives
+(directive) @keyword
+(directive_statement) @keyword
+(directive_keyword) @keyword.control
 (directive_name) @keyword.control
 (directive_method) @function
-"end" @keyword.control
-"else" @keyword.control  
-"elseif" @keyword.control
 
 ; EdgeJS Expression Content
 (function_call) @function.builtin
@@ -19,62 +19,47 @@
 (identifier) @variable
 (ternary_expression) @conditional
 (binary_expression) @operator
-(unary_expression) @operator
-(array_literal) @punctuation.bracket
 
 ; EdgeJS Parameters
-(each_parameter) @variable
-(component_parameter) @variable
-(let_parameter) @variable
-(param_identifier) @variable
 (param_string) @string
-(param_number) @number
-(param_boolean) @constant
-(param_object) @punctuation.bracket
-(param_property) @property
-(param_member_expression) @property
 
 ; EdgeJS Output Expressions
-"{{" @punctuation.bracket
-"}}" @punctuation.bracket
-"{{{" @punctuation.bracket
-"}}}" @punctuation.bracket
+("{{") @punctuation.bracket
+("}}") @punctuation.bracket
+("{{{") @punctuation.bracket
+("}}}") @punctuation.bracket
 
 ; Comments
 (comment) @comment
 
 ; HTML Structure
-"<" @punctuation.bracket
-">" @punctuation.bracket
-"</" @punctuation.bracket
-"/>" @punctuation.bracket
-"<!DOCTYPE" @keyword
-
-; Directive symbols
-"@" @operator
-"?" @conditional
-":" @operator
+("<") @punctuation.bracket
+(">") @punctuation.bracket
+("</") @punctuation.bracket
+("/>") @punctuation.bracket
+("<!DOCTYPE") @keyword
 
 ; Operators
-"||" @operator
-"&&" @operator
-"==" @operator
-"!=" @operator
-"===" @operator
-"!==" @operator
-"<" @operator
-">" @operator
-"<=" @operator
-">=" @operator
-"+" @operator
-"-" @operator
-"*" @operator
-"/" @operator
-"%" @operator
+("||") @operator
+("&&") @operator
+("?") @conditional
+(":") @operator
 
 ; Text content
 (text_content) @text
-(raw_text) @text
 
 ; Standalone expressions
 (standalone_expression) @conditional
+
+; Mixed content
+(mixed_attribute_value) @string
+(complex_parameter) @string
+(style_element) @tag
+(script_element) @tag
+(css_content) @string.special
+(js_content) @string.special
+(directive_component) @function
+(directive_params) @parameter
+(parameter_list) @parameter
+(output_expression) @embedded
+(expression_content) @embedded

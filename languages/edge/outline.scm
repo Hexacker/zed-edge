@@ -11,3 +11,11 @@
 
 ; Show comments in outline for easy navigation
 (comment) @item
+
+; Show style and script elements in outline
+(style_element
+  (tag_name) @name) @item
+
+; Show script elements in outline
+(script_element
+  (tag_name) @name) @item
