@@ -1,6 +1,6 @@
 id = "edge"
 name = "Edge"
-version = "1.0.0"
+version = "1.0.1"
 schema_version = 1
 authors = ["Abdelmadjid Cherfaoui <contact@hexacker.com>"]
 description = "Edge template language support with syntax highlighting and language server integration"
