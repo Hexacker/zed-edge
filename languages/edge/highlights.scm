@@ -20,8 +20,11 @@
 (ternary_expression) @conditional
 (binary_expression) @operator
 
-; EdgeJS Parameters
-(param_string) @string
+; EdgeJS Parameters and Literals
+(string_literal) @string
+(number_literal) @number
+(boolean_literal) @constant.builtin
+(null_literal) @constant.builtin
 
 ; EdgeJS Output Expressions
 ("{{") @punctuation.bracket
@@ -39,27 +42,25 @@
 ("/>") @punctuation.bracket
 ("<!DOCTYPE") @keyword
 
-; Operators
-("||") @operator
-("&&") @operator
-("?") @conditional
-(":") @operator
-
 ; Text content
 (text_content) @text
 
-; Standalone expressions
-(standalone_expression) @conditional
-
-; Mixed content
+; Mixed content and parameters
 (mixed_attribute_value) @string
-(complex_parameter) @string
+(complex_parameter) @parameter
+(each_parameter) @parameter
+(parameter_list) @parameter
+
+; Special elements
 (style_element) @tag
 (script_element) @tag
 (css_content) @string.special
 (js_content) @string.special
-(directive_component) @function
-(directive_params) @parameter
-(parameter_list) @parameter
+
+; Expressions
 (output_expression) @embedded
-(expression_content) @embedded
+(js_expression) @embedded
+
+; Object expressions
+(object_expression) @punctuation.bracket
+(object_property) @property

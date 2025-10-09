@@ -1,11 +1,15 @@
 id = "edge"
 name = "Edge"
-version = "0.2.0"
+version = "1.0.0"
 schema_version = 1
 authors = ["Abdelmadjid Cherfaoui <contact@hexacker.com>"]
-description = "Add Syntax Highlight Support for EdgeJS"
+description = "Edge template language support with syntax highlighting and language server integration"
 repository = "https://github.com/Hexacker/zed-edge.git"
 
 [grammars.edge]
 repository = "https://github.com/Hexacker/tree-sitter-edge"
-rev = "a53d25ad1fae73fab97bbbd78fb5548ac29045c6"
+rev = "e18511cbab58d115484b321b1e6afcfa19023ffc"
+
+[language_servers.edge-language-server]
+name = "edge-language-server"
+language = "Edge"

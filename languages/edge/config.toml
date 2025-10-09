@@ -1,9 +1,20 @@
 name = "Edge"
 grammar = "edge"
 path_suffixes = ["edge"]
-line_comments = ["{{-- ", " --}}"]
-block_comments = [["{{-- ", " --}}"]]
+
+# Block comments - for selection-based commenting (Cmd+Shift+/)
+block_comment = ["{{-- ", " --}}"]
+
 tab_size = 2
 hard_tabs = false
 word_characters = ["_", "-"]
 auto_indent_using_last_non_empty_line = true
+language_servers = ["edge-language-server"]
+
+# Auto-closing brackets (order matters - most specific first)
+brackets = [
+    { start = "{{--", end = "--}}", close = true, newline = false },
+    { start = "{{{", end = "}}}", close = true, newline = false },
+    { start = "{{", end = "}}", close = true, newline = false },
+    { start = "{", end = "}", close = true, newline = false },
+]
