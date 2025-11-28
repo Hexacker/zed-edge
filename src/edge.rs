@@ -21,6 +21,11 @@ impl EdgeExtension {
     }
 
     fn server_script_path(&mut self, language_server_id: &zed::LanguageServerId) -> Result<String> {
+        // Only handle the Edge language server, let Zed handle HTML and Emmet
+        if language_server_id.as_ref() != "edge-language-server" {
+            return Err(format!("Unsupported language server: {}", language_server_id.as_ref()).into());
+        }
+
         let server_exists = self.file_exists_at_path(&SERVER_PATH);
 
         if self.did_find_server && server_exists {
@@ -102,64 +107,80 @@ impl zed::Extension for EdgeExtension {
 
     fn language_server_initialization_options(
         &mut self,
-        _language_server_id: &zed::LanguageServerId,
+        language_server_id: &zed::LanguageServerId,
         worktree: &zed::Worktree,
     ) -> Result<Option<serde_json::Value>> {
-        let settings = LspSettings::for_worktree("edge-language-server", worktree)
-            .ok()
-            .and_then(|lsp_settings| lsp_settings.initialization_options.clone())
-            .unwrap_or_default();
-        Ok(Some(settings))
+        if language_server_id.as_ref() == "edge-language-server" {
+            let settings = LspSettings::for_worktree("edge-language-server", worktree)
+                .ok()
+                .and_then(|lsp_settings| lsp_settings.initialization_options.clone())
+                .unwrap_or_default();
+            Ok(Some(settings))
+        } else {
+            // For HTML and Emmet, return None to let Zed handle default initialization
+            Ok(None)
+        }
     }
 
     fn language_server_workspace_configuration(
         &mut self,
-        _language_server_id: &zed::LanguageServerId,
+        language_server_id: &zed::LanguageServerId,
         worktree: &zed::Worktree,
     ) -> Result<Option<serde_json::Value>> {
-        let mut settings = LspSettings::for_worktree("edge-language-server", worktree)
-            .ok()
-            .and_then(|lsp_settings| lsp_settings.settings.clone())
-            .unwrap_or_default();
+        if language_server_id.as_ref() == "edge-language-server" {
+            let mut settings = LspSettings::for_worktree("edge-language-server", worktree)
+                .ok()
+                .and_then(|lsp_settings| lsp_settings.settings.clone())
+                .unwrap_or_default();
 
-        // Add default formatting configuration if not provided
-        if let serde_json::Value::Object(ref mut map) = settings {
-            // Ensure formatting is enabled by default
-            if !map.contains_key("formatting") {
-                map.insert(
-                    "formatting".to_string(),
-                    serde_json::json!({
+            // Add default formatting configuration if not provided
+            if let serde_json::Value::Object(ref mut map) = settings {
+                // Ensure formatting is enabled by default
+                if !map.contains_key("formatting") {
+                    map.insert(
+                        "formatting".to_string(),
+                        serde_json::json!({
+                            "enabled": true,
+                            "printWidth": 80,
+                            "tabWidth": 2,
+                            "useTabs": false,
+                            "singleQuote": true,
+                            "trailingComma": "none"
+                        }),
+                    );
+                }
+            } else {
+                // If settings is not an object, create a new one with formatting config
+                settings = serde_json::json!({
+                    "formatting": {
                         "enabled": true,
                         "printWidth": 80,
                         "tabWidth": 2,
                         "useTabs": false,
                         "singleQuote": true,
                         "trailingComma": "none"
-                    }),
-                );
+                    }
+                });
             }
-        } else {
-            // If settings is not an object, create a new one with formatting config
-            settings = serde_json::json!({
-                "formatting": {
-                    "enabled": true,
-                    "printWidth": 80,
-                    "tabWidth": 2,
-                    "useTabs": false,
-                    "singleQuote": true,
-                    "trailingComma": "none"
-                }
-            });
-        }
 
-        Ok(Some(settings))
+            Ok(Some(settings))
+        } else {
+            // For HTML and Emmet, return None to let Zed handle default configuration
+            Ok(None)
+        }
     }
 
     fn label_for_completion(
         &self,
-        _language_server_id: &zed::LanguageServerId,
+        language_server_id: &zed::LanguageServerId,
         completion: Completion,
     ) -> Option<zed::CodeLabel> {
+        // Only provide custom completion labels for the Edge language server
+        // For HTML and Emmet, let Zed use its default handling
+        if language_server_id.as_ref() != "edge-language-server" {
+            return None;
+        }
+
         let highlight_name = match completion.kind? {
             CompletionKind::Class | CompletionKind::Interface => "type",
             CompletionKind::Constructor => "constructor",

@@ -13,3 +13,7 @@ rev = "e18511cbab58d115484b321b1e6afcfa19023ffc"
 [language_servers.edge-language-server]
 name = "edge-language-server"
 language = "Edge"
+
+[language_servers.emmet]
+name = "Emmet Language Server"
+languages = ["HTML", "CSS"]

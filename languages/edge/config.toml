@@ -9,7 +9,7 @@ tab_size = 2
 hard_tabs = false
 word_characters = ["_", "-"]
 auto_indent_using_last_non_empty_line = true
-language_servers = ["edge-language-server"]
+language_servers = ["edge-language-server", "html", "emmet"]
 
 # Auto-closing brackets (order matters - most specific first)
 brackets = [
@@ -18,3 +18,7 @@ brackets = [
     { start = "{{", end = "}}", close = true, newline = false },
     { start = "{", end = "}", close = true, newline = false },
 ]
+
+[emmet]
+enabled = true
+syntaxes = ["html", "edge"]

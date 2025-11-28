@@ -6,6 +6,8 @@ A comprehensive Zed extension that provides syntax highlighting and language ser
 
 - **Syntax Highlighting**: Full syntax highlighting support for EdgeJS templates using tree-sitter
 - **Language Server**: Automatic installation and integration of the Edge language server
+- **HTML Support**: Full HTML syntax highlighting and language server features
+- **Emmet Support**: Emmet abbreviations and expansion for faster HTML development
 - **Auto-completion**: Intelligent code completion for EdgeJS directives and expressions
 - **Error Detection**: Real-time error detection and diagnostics
 - **Hover Information**: Rich hover information for EdgeJS syntax
@@ -55,7 +57,8 @@ You can configure the language server version in your Zed settings:
 
 - EdgeJS directives (@if, @each, @include, etc.)
 - Template expressions ({{ }}, {{{ }}})
-- HTML integration
+- Full HTML language features and syntax highlighting
+- Emmet abbreviations and expansion
 - CSS and JavaScript embedded content
 - Comments and documentation
 - Format on save
